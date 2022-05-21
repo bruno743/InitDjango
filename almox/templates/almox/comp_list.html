@@ -1,0 +1,13 @@
+{% extends 'almox/base.html' %}
+
+{% block title %} Almoxarifado {% endblock %}
+
+{% block content %}
+    {% for comp in comp_list %}
+        <article>
+            <h2>{{ comp.comp_name }}</h2>
+            <p>modelo: {{ comp.comp_mod }} | serial: {{ comp.comp_nserial }} | ean: {{ comp.comp_ean }} | </p>
+            <p>estado: {{ comp.comp_estado }} | status: {{ comp.comp_status }} | localizacao: {{ comp.comp_loc }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}

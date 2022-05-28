@@ -3,11 +3,39 @@
 {% block title %} Almoxarifado {% endblock %}
 
 {% block content %}
-    {% for comp in comp_list %}
-        <article>
-            <h2>{{ comp.comp_name }}</h2>
-            <p>modelo: {{ comp.comp_mod }} | serial: {{ comp.comp_nserial }} | ean: {{ comp.comp_ean }} | </p>
-            <p>estado: {{ comp.comp_estado }} | status: {{ comp.comp_status }} | localizacao: {{ comp.comp_loc }}</p>
-        </article>
-    {% endfor %}
+    <div>
+        <a href="addcomp/"><button>adicionar</button></a>
+        <br />
+        <input placeholder="componente">
+        <button>buscar/filtrar</button>
+        <h4>filtrar por</h4>
+        <form action="" method="post">
+            <label>modelo</label>
+            <input type="text">
+            <br />
+            <label>estado</label>
+            <input type="text">
+            <br />
+            <label>status</label>
+            <input type="text">
+            <br />
+            <label>localizacao</label>
+            <input type="text">
+            <br />
+            <input type="submit" value="filtrar">
+        </form>
+    </div>
+    {% if case == 0 %}
+        <ul>
+        {% for comp in comps %}
+            <li>
+                <span><a href="/comp/{{comp.id}}"><h3>{{ comp.comp_name }}</h3></a></span>
+                <span>modelo: {{ comp.comp_mod }} | serial: {{ comp.comp_nserial }} | ean: {{ comp.comp_ean }} | estado: {{ comp.comp_estado }} | status: {{ comp.comp_status }} | localizacao: {{ comp.comp_loc }}</span>
+                <span><button>atualizar</button></span>
+            </li>
+        {% endfor %}
+        </ul>
+    {% elif case == 1 %}
+            <h2>NADA</h2>
+    {% endif %}
 {% endblock %}

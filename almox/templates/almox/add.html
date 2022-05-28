@@ -1,0 +1,14 @@
+{% extends 'almox/base.html' %}
+
+{% block title %}Adicione um componente{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Adicionar componente:</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add Componente">
+    </form>
+</div>
+{% endblock %}

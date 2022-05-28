@@ -1,0 +1,17 @@
+{% extends 'almox/base.html' %}
+
+{% block title %} Componente {% endblock %}
+
+{% block content %}
+    
+    <div>
+        <h2>{{comp.comp_name}}</h2>
+        <p>Modelo: {{comp.comp_mod}}</p>
+        <p>Nº Serial: {{comp.comp_nserial}}</p>
+        <p>EAN: {{comp.comp_ean}}</p>
+        <p>Local: {{comp.comp_loc}}</p>
+        <p>Status: {{comp.comp_status}}</p>
+        <p>Estado: {{comp.comp_estado}}</p>
+        <p>Observações: {{comp.comp_addobs}}</p>
+    </div>
+{% endblock %}

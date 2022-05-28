@@ -1,0 +1,7 @@
+{% for comp in comp_list %}
+    <article>
+        <h3>{{ comp.comp_name }}</h3>
+        <p>modelo: {{ comp.comp_mod }} | serial: {{ comp.comp_nserial }} | ean: {{ comp.comp_ean }} | estado: {{ comp.comp_estado }} | status: {{ comp.comp_status }} | localizacao: {{ comp.comp_loc }}</p>
+        <button>atualizar</button>
+    </article>
+{% endfor %}

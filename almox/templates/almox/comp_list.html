@@ -31,10 +31,23 @@
             <li>
                 <span><a href="/comp/{{comp.id}}"><h3>{{ comp.comp_name }}</h3></a></span>
                 <span>modelo: {{ comp.comp_mod }} | serial: {{ comp.comp_nserial }} | ean: {{ comp.comp_ean }} | estado: {{ comp.comp_estado }} | status: {{ comp.comp_status }} | localizacao: {{ comp.comp_loc }}</span>
-                <span><button>atualizar</button></span>
+                <a href="/edit/{{comp.id}}"><span><button>atualizar</button></span></a>
             </li>
         {% endfor %}
         </ul>
+        <div>
+            <span>
+                {% if comps.has_previous %}
+                    <a href="wpage={{ comps.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+                {% endif %}
+
+                <span>{{ comps.number }} de {{ comps.paginator.num_pages }}</span>
+
+                {% if comps.has_next %}
+                    <a href="wpage={{ comps.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+                {% endif %}
+            </span>
+        </div>
     {% elif case == 1 %}
             <h2>NADA</h2>
     {% endif %}

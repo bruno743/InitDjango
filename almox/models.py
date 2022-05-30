@@ -25,15 +25,15 @@ class Type(models.Model):
 class Comp(models.Model):
 
     STATUS_CHOICES = (
-        ('O', 'operante'),
-        ('I', 'inoperante'),
+        ('operante', 'O'),
+        ('inoperante', 'I'),
     )
 
     ESTADO_CHOICES = (
-        ('DC', 'disponivel/com caixa'),
-        ('DS', 'disponivel/sem caixa'),
-        ('IND', 'indisponivel'),
-        ('C', 'cedido'),
+        ('disponivel/com caixa', 'DC'),
+        ('disponivel/sem caixa', 'DS'),
+        ('indisponivel', 'IND'),
+        ('cedido', 'C'),
     )
 
     comp_name = models.CharField(max_length=255)

@@ -10,7 +10,10 @@ def complist(request):
     search = request.GET.get('search')
 
     if search:
-        comps = Comp.objects.filter(comp_name__icontains=search)
+        comps_list = Comp.objects.filter(comp_name__icontains=search)
+        paginator = Paginator(comps_list, 5)
+        page = request.GET.get('page')
+        comps = paginator.get_page(page)
     else:
         comps_list = Comp.objects.all()
         paginator = Paginator(comps_list, 5)

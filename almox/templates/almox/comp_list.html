@@ -6,10 +6,20 @@
     <div>
         <a href="addcomp/"><button>adicionar</button></a>
         <br />
-        <input placeholder="componente">
-        <button>buscar/filtrar</button>
+        <div>
+            <form method="GET" id="search-form">
+                <input
+                type="text"
+                id="search"
+                name="search"
+                placeholder="Nome do componente..."
+                value="{{ request.GET.search }}"
+                >
+                <input type="submit" value="buscar/filtrar" id="search-btn">
+            </form>
+        </div>
         <h4>filtrar por</h4>
-        <form action="" method="post">
+        <form method="GET" id="filter-form">
             <label>modelo</label>
             <input type="text">
             <br />
@@ -22,7 +32,7 @@
             <label>localizacao</label>
             <input type="text">
             <br />
-            <input type="submit" value="filtrar">
+            <input type="submit" value="filtrar" id="filter-btn">
         </form>
     </div>
     {% if case == 0 %}
@@ -38,13 +48,13 @@
         <div>
             <span>
                 {% if comps.has_previous %}
-                    <a href="wpage={{ comps.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+                    <a href="?page={{ comps.previous_page_number }}"><button>←</button></a>
                 {% endif %}
 
                 <span>{{ comps.number }} de {{ comps.paginator.num_pages }}</span>
 
                 {% if comps.has_next %}
-                    <a href="wpage={{ comps.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+                    <a href="?page={{ comps.next_page_number }}"><button>→</button></a>
                 {% endif %}
             </span>
         </div>

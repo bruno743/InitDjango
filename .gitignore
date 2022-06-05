@@ -1,3 +1,3 @@
 initdjango/vars.py
-/djwenv
-/djenv
+djwenv/
+djenv/

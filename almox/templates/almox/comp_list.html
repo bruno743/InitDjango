@@ -4,61 +4,58 @@
 
 {% block content %}
     <div>
-        <a href="addcomp/"><button>adicionar</button></a>
+        <a href="addcomp/" class="searching"><button>adicionar</button></a>
         <br />
         <div>
-            <form method="GET" id="search-form">
+            <form method="GET" id="search-form" class="searching">
                 <input
                 type="text"
                 id="search"
                 name="search"
                 placeholder="Nome do componente..."
                 value="{{ request.GET.search }}"
+                class="searching"
                 >
-                <input type="submit" value="buscar/filtrar" id="search-btn">
+                <input type="submit" value="buscar/filtrar" id="search-btn" class="searching">
             </form>
         </div>
         <h4>filtrar por</h4>
-        <form method="GET" id="filter-form">
-            <label>modelo</label>
-            <input type="text">
+        <form method="GET" id="filter-form" class="searching">
+            <input type="text" name="search-loc" class="searching">
+            <label class="searching">localizacao</label>
             <br />
-            <label>estado</label>
-            <input type="text">
+            <input type="text" name="search-est" class="searching">
+            <label class="searching">estado</label>
             <br />
-            <label>status</label>
-            <input type="text">
-            <br />
-            <label>localizacao</label>
-            <input type="text">
+            <input type="text" name="search-stat" class="searching">
+            <label class="searching">status</label>
             <br />
             <input type="submit" value="filtrar" id="filter-btn">
         </form>
     </div>
-    {% if case == 0 %}
-        <ul>
-        {% for comp in comps %}
-            <li>
-                <span><a href="/comp/{{comp.id}}"><h3>{{ comp.comp_name }}</h3></a></span>
-                <span>modelo: {{ comp.comp_mod }} | serial: {{ comp.comp_nserial }} | ean: {{ comp.comp_ean }} | estado: {{ comp.comp_estado }} | status: {{ comp.comp_status }} | localizacao: {{ comp.comp_loc }}</span>
-                <a href="/edit/{{comp.id}}"><span><button>atualizar</button></span></a>
-            </li>
-        {% endfor %}
-        </ul>
-        <div>
-            <span>
-                {% if comps.has_previous %}
-                    <a href="?page={{ comps.previous_page_number }}"><button>←</button></a>
-                {% endif %}
+    <ul id="list-comps">
+    {% for comp in comps %}
+        <li>
+            <span><a href="/comp/{{comp.id}}"><h3>{{ comp.comp_name }}</h3></a></span>
+            <span>modelo: {{ comp.comp_mod }} | serial: {{ comp.comp_nserial }} | ean: {{ comp.comp_ean }} | estado: {{ comp.comp_estado }} | status: {{ comp.comp_status }} | localizacao: {{ comp.comp_loc }}</span>
+            <a href="/edit/{{comp.id}}"><span><button>atualizar</button></span></a>
+        </li>
+    {% endfor %}
+    </ul>
+    <div id="num-pages">
+        <span>
+            {% if comps.has_previous %}
+                <a href="?page={{ comps.previous_page_number }}"><button>←</button></a>
+            {% endif %}
 
-                <span>{{ comps.number }} de {{ comps.paginator.num_pages }}</span>
+            <span>{{ comps.number }} de {{ comps.paginator.num_pages }}</span>
 
-                {% if comps.has_next %}
-                    <a href="?page={{ comps.next_page_number }}"><button>→</button></a>
-                {% endif %}
-            </span>
-        </div>
-    {% elif case == 1 %}
-            <h2>NADA</h2>
-    {% endif %}
+            {% if comps.has_next %}
+                <a href="?page={{ comps.next_page_number }}"><button>→</button></a>
+            {% endif %}
+        </span>
+    </div>
+    <div>
+        <a href="addloc/"><button>Adicionar localidade</button></a>
+    </div>
 {% endblock %}

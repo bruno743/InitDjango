@@ -5,3 +5,24 @@ ul {
 li {
     list-style: none;
 }
+
+#main-body {
+    background-color: #f5fafd;
+    padding: 8%;
+}
+
+#list-comps {
+    margin-top: 8%;
+    margin-bottom: 4%;
+}
+
+.searching {
+    margin-top: .5%;
+    margin-bottom: .5%;
+}
+
+#num-pages {
+    text-align: center;
+    margin-right: 25%;
+    margin-bottom: 9%;
+}

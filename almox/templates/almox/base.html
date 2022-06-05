@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
-<body>
-    <header>
+<body id="main-body">
+    <header id="main-header">
         <a href="/"><h1>Almoxarifado</h1></a>
     </header>
 
-    <main>
+    <main id="main-content">
         {% block content %}
         {% endblock %}
     </main>
